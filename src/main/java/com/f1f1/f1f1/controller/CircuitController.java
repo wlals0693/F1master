@@ -360,7 +360,7 @@ public class CircuitController {
         ));
 
         CIRCUIT_DB.put("yasmarina", new Circuit(
-                "백서진 바보",
+                "야스 마리나 서킷",
                 "야스 마리나 서킷(Yas Marina Circuit)",
                 "/images/nationalflag/arab.jpg",
                 "/images/cricuits/yasmarina.webp", // 이미지 1장만 넣어도 OK
