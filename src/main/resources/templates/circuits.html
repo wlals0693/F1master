@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<div layout:fragment="content">
+
+    <style>
+        .circuit-grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap:24px;
+            margin-top:24px;
+        }
+
+        /* 기존 card 느낌 유지 */
+        .circuit-card{
+            display:block;
+            text-decoration:none;
+            color:inherit;
+            background:#fff;
+            border-radius:14px;
+            overflow:hidden;
+            box-shadow:0 4px 12px rgba(0,0,0,0.10);
+            transition:all .25s ease;
+        }
+        .circuit-card:hover{
+            transform: translateY(-6px);
+            box-shadow:0 12px 30px rgba(0,0,0,0.18);
+        }
+
+        /* 이미지 스왑 영역 */
+        .swap-img{
+            position:relative;
+            height:180px;
+            background:#f2f2f2;
+        }
+        .swap-img img{
+            position:absolute;
+            inset:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition: opacity .25s ease;
+        }
+
+        /* 기본은 국기 */
+        .swap-img .flag{ opacity:1; }
+        .swap-img .track{ opacity:0; }
+
+        /* hover 시 서킷 사진으로 전환 */
+        .circuit-card:hover .swap-img .flag{ opacity:0; }
+        .circuit-card:hover .swap-img .track{ opacity:1; }
+
+        .circuit-body{
+            padding:16px;
+        }
+        .circuit-body h3{
+            margin:0 0 8px;
+            font-size:18px;
+            text-align: center;
+        }
+        .circuit-body p{
+            margin:0;
+            font-size:14px;
+            color:#555;
+        }
+    </style>
+
+    <h1>2025 F1 서킷</h1>
+
+    <div class="circuit-grid">
+        <a class="circuit-card"
+           th:each="entry : ${circuits}"
+           th:href="@{/circuits/{id}(id=${entry.key})}">
+
+            <div class="swap-img">
+                <!-- 기본: 국기 -->
+                <img class="flag"
+                     th:src="${entry.value.flagImage}"
+                     th:alt="${entry.value.name} + ' flag'">
+
+                <!-- hover: 서킷 -->
+                <img class="track"
+                     th:src="${entry.value.circuitImage}"
+                     th:alt="${entry.value.name} + ' track'">
+            </div>
+
+            <div class="circuit-body">
+                <h3 th:text="${entry.value.name}">Circuit Name</h3>
+            </div>
+
+        </a>
+    </div>
+
+</div>
+</html>

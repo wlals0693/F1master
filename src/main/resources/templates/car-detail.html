@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<div layout:fragment="content">
+
+    <a href="/cars">← 목록으로</a>
+
+    <!-- ===================== -->
+    <!-- 🔧 기술 상세 (엔진/차체/타이어) -->
+    <!-- ===================== -->
+    <div th:if="${car.type == 'tech'}">
+
+        <h1 th:text="${car.name}">기술 이름</h1>
+        <p th:text="${car.desc}" style="color:#555;"></p>
+
+        <div style="display:flex; gap:16px; overflow-x:auto; margin:20px 0;">
+            <img th:each="img : ${car.images}"
+                th:src="${img}"
+                th:alt="${car.name}"
+                style="height:260px; border-radius:12px;">
+        </div>
+
+        <!-- 위키 스타일 박스 -->
+        <div style="background:#f9f9f9; padding:18px; border-radius:14px;">
+            <h3>개요</h3>
+            <p th:text="${car.longDesc}" style="white-space: pre-line; line-height:1.8;"></p>
+        </div>
+
+    </div>
+
+    <!-- ===================== -->
+    <!-- 🏎️ 팀 차량 상세 -->
+    <!-- ===================== -->
+    <div th:if="${car.type == 'team'}">
+
+        <h1 th:text="${car.name}">팀 차량</h1>
+        <p th:text="${car.desc}" style="color:#555;"></p>
+
+        <!-- 메인 이미지 -->
+        <div style="display:flex; gap:16px; overflow-x:auto; margin:20px 0;">
+            <img th:each="img : ${car.images}"
+                th:src="${img}"
+                th:alt="${car.name}"
+                style="height:260px; border-radius:12px;">
+        </div>
+
+        <!-- 스펙 카드 -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+
+            <div th:each="spec : ${car.specs.entrySet()}"
+                style="background:#fff; padding:16px; border-radius:12px;">
+                <strong th:text="${spec.key}">항목</strong>
+                <p th:text="${spec.value}">값</p>
+            </div>
+
+        </div>
+
+        <!-- 상세 설명 -->
+        <div style="margin-top:20px;">
+            <h3>차량 설명</h3>
+            <p th:text="${car.longDesc}"
+                style="white-space: pre-line; line-height:1.7; font-size:16px;">
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+</html>

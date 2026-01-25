@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<div layout:fragment="content">
+
+    <style>
+        .section-title { margin: 10px 0 6px; }
+        .section-desc { margin: 0 0 18px; color: #555; }
+        .divider { height: 1px; background: #eee; margin: 30px 0; }
+
+        /* 텍스트 카드 */
+        .text-card {
+            padding: 16px 18px;
+        }
+        .text-card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+        .text-card p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+    </style>
+
+    <!-- ===================== -->
+    <!-- 1️⃣ F1카 기술 소개 (사진 카드) -->
+    <!-- ===================== -->
+    <h1 class="section-title">F1레이싱카 소개</h1>
+
+    <div class="card-grid">
+        <a class="card"
+           th:each="entry : ${techCars}"
+           th:href="@{/cars/{id}(id=${entry.key})}">
+
+            <!--  사진 있음 -->
+            <img th:src="${entry.value.images[0]}" th:alt="${entry.value.name}">
+
+            <div class="card-body">
+                <h3 th:text="${entry.value.name}">엔진</h3>
+                <p th:text="${entry.value.desc}">한 줄 설명</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ===================== -->
+    <!-- 2️⃣ 2025 F1 레이싱카 (텍스트 카드) -->
+    <!-- ===================== -->
+    <h1 class="section-title">2025 F1 레이싱카</h1>
+
+    <div class="card-grid">
+        <a class="card text-card"
+           th:each="entry : ${teamCars}"
+           th:href="@{/cars/{id}(id=${entry.key})}">
+
+            <!-- ❌ 사진 없음 -->
+            <h3 th:text="${entry.value.name}">팀 차량</h3>
+            <p th:text="${entry.value.desc}">한 줄 설명</p>
+
+        </a>
+    </div>
+
+</div>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<div layout:fragment="content">
+
+    <style>
+        .section-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            margin-bottom: 6px;
+        }
+
+        .page-subtitle {
+            margin-bottom: 24px;
+            color: #555;
+        }
+
+        .stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        /* 아코디언 카드 */
+        details.f1-accordion {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.25s ease;
+        }
+
+        details.f1-accordion:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+        }
+
+        details.f1-accordion summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 18px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        details.f1-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .acc-thumb {
+            width: 120px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: #eee;
+            flex-shrink: 0;
+        }
+
+        .acc-head h3 {
+            margin: 0 0 6px;
+        }
+
+        .acc-head p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .badges {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #f1f1f1;
+            color: #333;
+        }
+
+        .acc-body {
+            padding: 0 18px 18px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #222;
+        }
+    </style>
+
+    <div class="section-wrap">
+
+        <h1 class="page-title">포뮬러 1 소개 🏎️</h1>
+
+        <div class="stack">
+
+            <!-- 프랙티스 -->
+            <details class="f1-accordion">
+                <summary>
+                    <img class="acc-thumb" src="/images/home/practice.jpg" alt="프랙티스">
+                    <div class="acc-head">
+                        <h3>프랙티스</h3>
+                        <p>
+                            최적의 차 세팅과 주행 연습
+                        </p>
+                        <div class="badges">
+                            <span class="badge">시뮬레이션</span>
+                            <span class="badge">세팅</span>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="acc-body">
+                    <p>
+                        프랙티스는 금요일부터 토요일 오전까지 FP1~3으로 각각 60분씩 진행된다. 
+                        서킷의 특성에 따라 차의 세팅을 적절하게 바꿔서 사용해야 하기 때문에 
+                        각 팀들은 레이스 시뮬레이터를 활용해 서킷에 맞는 세팅을 예상해서 준비하지만 
+                        실제 서킷에서 주행 시 예상과 다른 부분들이 많아 프렉티스에서 직접 주행하며 차의 세팅을 조절한다.
+                    </p>
+                    <p>
+                        기본적인 세팅의 방향성을 확인하고 퀄리파잉을 대비한 한계치의 주행이나 레이싱을 위한 
+                        안정적인 고속 주행에 대해 데이터를 쌓아 최적의 세팅을 만들어가는 일정이다.
+                    </p>
+                    <p>
+                        프랙티스3 종료 후 퀄리파잉 시작까지가 세팅을 변경할 수 있는 마지막 기회이며 퀄리파잉이 끝나면 차의 세팅을 변경할 수 없다.
+                    </p>
+                </div>
+            </details>
+
+            <!-- 퀄리파잉 -->
+            <details class="f1-accordion">
+                <summary>
+                    <img class="acc-thumb" src="/images/home/qualifying.jpg" alt="퀄리파잉">
+                    <div class="acc-head">
+                        <h3>퀄리파잉</h3>
+                        <p>
+                            레이스 출발 순서를 결정하는 예선 방식
+                        </p>
+                        <div class="badges">
+                            <span class="badge">Q1</span>
+                            <span class="badge">Q2</span>
+                            <span class="badge">Q3</span>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="acc-body">
+                    <p>
+                        퀄리파잉은 토요일 오후에 진행되는데 퀄리파잉 결과에 따라 서킷 맨 앞부터 차례대로
+                         그리드를 배정받기 때문에 매우 중요한 일정이다. Q1, Q2, Q3로 진행되고, 
+                         각 세션은 18분, 15분, 12분으로 도합 45분 동안 진행된다.
+                    </p>
+                    <p>
+                        타이머가 0이 되기전 시작한 랩까지 기록이 인정되며 세션 도중 사고로 레드 플래그가 나올 경우 타이머가 멈춘다. 
+                        Q1 기록의 하위 5명은 Q2에 진출하지 못하고 순서대로 16~20 그리드를 배정받는다. Q2 기록에서 남은 15명중 하위 5명은
+                         Q3진출하지 못하고 11~15그리드를 배정받는다. Q3에 진출한 10명의 드라이버는 기록에 따라 1~10그리드를 배정받고 해당 순서로 레이스를 시작하게 된다.
+                    </p>
+                    <p>
+                        드라이버들은 최대한 빠른 랩을 기록해 스타팅 그리드 순위를 올려야하지만 트랙을 벗어나면 기록이 삭제되기 때문에
+                        규정을 위반하지 않는 선에서 극한의 레이싱 라인과 속도를 만들어야 하는 어려운 싸움이다.
+                    </p>
+                </div>
+            </details>
+            
+            <!-- 레이싱 -->
+            <details class="f1-accordion">
+                <summary>
+                    <img class="acc-thumb" src="/images/home/racing.jpg" alt="레이싱">
+                    <div class="acc-head">
+                        <h3>레이싱</h3>
+                        <p>
+                            본 레이스 진행 방식과 포인트 시스템
+                        </p>
+                        <div class="badges">
+                            <span class="badge">포디움</span>
+                            <span class="badge">전략과 심리전</span>
+                            <span class="badge">1~10위 포인트</span>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="acc-body">
+                    <p>
+                        레이싱은 일요일에 진행된다. 최소 305KM를 주행하며 
+                        서킷마다 랩당 길이가 다르기 때문에 총 랩 수가 다르다.
+                    </p>
+                    <p>
+                        레이스 시작 전 포메이션 랩을 통해 타이어와 브레이크 온도를 올린다.
+                        이후 녹색기가 나오고 5개의 적색 신호등이 차례대로 켜졌다가
+                        동시에 꺼지는 순간 레이스가 시작된다.
+                    </p>
+                    <p>
+                        레이스는 자유 경쟁이며 추월을 통해 순위를 올린다.
+                        1위 차량이 정해진 랩 수를 완주하면 결승선 앞에 체커드 플래그가 등장하고,
+                        이를 받으면 레이스는 종료된다. 1~3위 드라이버들은 포디움에 올라 트로피를 받고 
+                        샴페인을 뿌리며 세레머니를 진행한다.
+                    </p>
+                    <p>
+                        포인트는 1위부터 10위까지
+                        25, 18, 15, 12, 10, 8, 6, 4, 2, 1점을 획득하며,
+                        스프린트 레이스에서는 1위부터 8위까지 8~1점을 얻는다.
+                    </p>
+                </div>
+            </details>
+
+            <!-- 챔피언 -->
+            <details class="f1-accordion">
+                <summary>
+                    <img class="acc-thumb" src="/images/home/wdc.jpg" alt="챔피언">
+                    <div class="acc-head">
+                        <h3>챔피언</h3>
+                        <p>
+                            시즌의 주인공
+                        </p>
+                        <div class="badges">
+                            <span class="badge">드라이버 챔피언</span>
+                            <span class="badge">컨스트럭터 챔피언</span>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="acc-body">
+                    <p>
+                        1년동안 예정된 그랑프리에서 받은 점수를 합산해 드라이버의 최종 순위가 결정되는데
+                         가장 높은 점수를 가진 드라이버는 드라이버 챔피언 타이틀을 가져가며 
+                         다음 시즌에 드라이버 번호로 '1'번을 사용할 권리를 얻는다.
+                    </p>
+                    <p>
+                        드라이버 챔피언쉽과 별개로 팀의 두 드라이버의 점수를 합산해 가장 높은 점수를 가진 팀은 
+                        컨스트럭터 챔피언 타이틀을 가져가게 된다.
+                    </p>
+                </div>
+            </details>
+
+            <!-- 플래그 -->
+            <details class="f1-accordion">
+                <summary>
+                    <img class="acc-thumb" src="/images/home/flag.jpg" alt="플래그">
+                    <div class="acc-head">
+                        <h3>플래그</h3>
+                        <p>
+                            레이스 진행의 핵심
+                        </p>
+                        <div class="badges">
+                            <span class="badge">yellow flag</span>
+                            <span class="badge">red flag</span>
+                            <span class="badge">sc,vsc</span>
+                        </div>
+                    </div>
+                </summary>
+
+                <div class="acc-body">
+                    <br><br><br>
+                    <img class="acc-thumb" src="/images/home/greenflag.jpg" alt="그린플래그">
+                    <p>
+                        녹색기(green flag)는 레이스 시작이 정상적으로 가능할 경우, 문제가 해결되어 정상 진행이 가능해진 경우 사용된다.
+                    </p>
+                    <img class="acc-thumb" src="/images/home/yellowflag.jpg" alt="옐로플래그">
+                    <p>
+                        황색기(yellow flag)는 트랙에 문제가 발생했을 시 서행, 추월금지, 세이프티 카(SC) 상황을 알릴 때 사용되며 
+                        문제가 생긴 구간에만 선언되거나 트랙 전체에 선언된다.
+                    </p>
+                    <img class="acc-thumb" src="/images/home/redflag.jpg" alt="레드플래그">
+                    <p>
+                        적색기(red flag)는 큰 사고나 기상 악화 등으로 레이스를 진행할 수 없을 때 선언되며 
+                        레이스를 중단하고 모든 차는 차고에 들어와 문제 해결을 기다려야 한다.
+                    </p>
+                    <img class="acc-thumb" src="/images/home/blueflag.jpg" alt="블루플래그">
+                    <p>
+                        청색기(blue flag)는 프랙티스나 퀄리파잉 등에서 뒤쪽 빠른 차량에게 자리를 양보하라는 지시나 
+                        레이스에서 1랩 이상 뒤쳐져 선두에게 자리를 양보해야 하는 상황에 선언된다.
+                    </p>
+                    <img class="acc-thumb" src="/images/home/cflag.jpg" alt="체커기">
+                    <p>
+                        흑백격자무늬기(chequered flag)는 레이싱 종료 시 선언되며 체커기라고 불린다.
+                    </p>
+                </div>
+            </details>
+
+        </div>
+    </div>
+
+</div>
+</html>
